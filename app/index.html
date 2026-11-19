@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI Trophy Guide — All 55 Trophies, Roadmap &amp; Tracker</title>
+<meta name="description" content="The complete offline guide and tracker for all 55 Grand Theft Auto VI PlayStation 5 trophies: step-by-step guides, roadmap to the platinum, missable warnings, collectibles and progress tracking.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#checklist">Skip to the trophy list</a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-title">
+      <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Leonida</p>
+      <h1>GTA VI Trophy Guide</h1>
+      <p class="subtitle">All 55 trophies. Step-by-step guides with sources. A roadmap to the platinum — and a tracker that saves your progress offline.</p>
+      <nav class="views" aria-label="Views">
+        <button type="button" data-view="dashboard" class="view-btn active">Dashboard</button>
+        <button type="button" data-view="checklist" class="view-btn">Trophies</button>
+        <button type="button" data-view="roadmap" class="view-btn">Roadmap</button>
+        <button type="button" data-view="collectibles" class="view-btn">Collectibles</button>
+        <button type="button" data-view="missable" class="view-btn">Missable <span class="nav-count" id="navMissable">7</span></button>
+      </nav>
+    </div>
+    <div class="hero-ring" aria-label="Platinum progress">
+      <svg id="progressRing" viewBox="0 0 200 200" role="img" aria-label="Progress ring">
+        <circle class="ring-bg" cx="100" cy="100" r="84"></circle>
+        <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="84"></circle>
+      </svg>
+      <div class="ring-text">
+        <span class="ring-count" id="ringCount">0 / 55</span>
+        <span class="ring-pct" id="ringPct">0%</span>
+        <span class="ring-label">to Platinum</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num" id="statEarned">0</span><span class="stat-label">trophies earned of 55</span></div>
+    <div class="stat"><span class="stat-num" id="statHours">~78 h</span><span class="stat-label">estimated time remaining</span></div>
+    <div class="stat"><span class="stat-num" id="statMissable">7 at risk</span><span class="stat-label">missable trophies unearned</span></div>
+    <div class="stat"><span class="stat-num" id="statGrade">1P &middot; 2G &middot; 6S &middot; 46B</span><span class="stat-label">platinum, gold, silver, bronze</span></div>
+  </div>
+</header>
+
+<main>
+  <section id="view-dashboard" class="view active" aria-label="Dashboard">
+    <div id="missableBanner" class="banner warn" role="alert"></div>
+    <div class="dash-grid">
+      <section class="panel upnext" aria-labelledby="upnextTitle">
+        <h2 id="upnextTitle">Up next — chase these first</h2>
+        <p class="panel-sub">Missable trophies first, then the quickest wins. Updates live as you check trophies off.</p>
+        <ol id="upNextList" class="upnext-list"></ol>
+      </section>
+      <section class="panel" aria-labelledby="breakdownTitle">
+        <h2 id="breakdownTitle">Difficulty &amp; time breakdown</h2>
+        <p class="panel-sub">Difficulty stars and time estimates are this guide&rsquo;s estimates, labelled as such.</p>
+        <div id="diffChart" class="barchart"></div>
+        <div id="timeSplit" class="timesplit"></div>
+      </section>
+    </div>
+    <section class="panel" aria-labelledby="gradeTitle">
+      <h2 id="gradeTitle">Progress by grade</h2>
+      <div id="gradeBars" class="grade-bars"></div>
+    </section>
+    <section class="panel howto" aria-labelledby="howtoTitle">
+      <h2 id="howtoTitle">How to use this guide</h2>
+      <ol class="howto-list">
+        <li><strong>Follow the Roadmap</strong> in order — story first, missables before the finale, cleanup last.</li>
+        <li><strong>Check trophies off</strong> as you earn them; progress saves in your browser and the ring, stats and roadmap all update.</li>
+        <li><strong>Open any trophy card</strong> for its full step-by-step guide, tip and sources.</li>
+        <li><strong>Export your progress</strong> to a file as a backup, and import it back any time.</li>
+      </ol>
+      <p class="fineprint">Rarity percentages are not published for this list yet — grades are shown instead, and no rarity figure is invented. Difficulty and time are this guide&rsquo;s estimates. Official names, descriptions and grades are exactly as PlayStation publishes them. No Rockstar artwork or logo is used; the look is this guide&rsquo;s own.</p>
+    </section>
+  </section>
+
+  <section id="view-checklist" class="view" aria-label="Trophy checklist">
+    <div class="toolbar">
+      <div class="search-row">
+        <label class="search-label" for="searchInput">Search trophies</label>
+        <input id="searchInput" type="search" placeholder="Search name, description, guide or tip…" autocomplete="off">
+      </div>
+      <div class="chips" id="kindChips" role="group" aria-label="Filter by kind">
+        <button type="button" data-kind="all" class="chip active">All</button>
+        <button type="button" data-kind="story" class="chip">Story</button>
+        <button type="button" data-kind="missable" class="chip">Missable</button>
+        <button type="button" data-kind="collectible" class="chip">Collectibles</button>
+        <button type="button" data-kind="activity" class="chip">Activities</button>
+        <button type="button" data-kind="online" class="chip">Online</button>
+        <button type="button" data-kind="earned" class="chip">Earned</button>
+        <button type="button" data-kind="remaining" class="chip">Remaining</button>
+      </div>
+      <div class="toolbar-row">
+        <label>Grade
+          <select id="gradeFilter">
+            <option value="all">All grades</option>
+            <option value="platinum">Platinum</option>
+            <option value="gold">Gold</option>
+            <option value="silver">Silver</option>
+            <option value="bronze">Bronze</option>
+          </select>
+        </label>
+        <label>Difficulty
+          <select id="diffFilter">
+            <option value="all">Any difficulty</option>
+            <option value="1">1 star — Easy</option>
+            <option value="2">2 stars — Moderate</option>
+            <option value="3">3 stars — Hard</option>
+            <option value="4">4 stars — Very Hard</option>
+            <option value="5">5 stars — Extreme</option>
+          </select>
+        </label>
+        <label>Sort
+          <select id="sortSelect">
+            <option value="roadmap">Roadmap order</option>
+            <option value="name">Name A–Z</option>
+            <option value="grade">Grade (best first)</option>
+            <option value="difficulty">Difficulty (easiest first)</option>
+          </select>
+        </label>
+        <label class="spoiler-toggle">
+          <input id="spoilerToggle" type="checkbox" checked>
+          <span>Hide story spoilers until earned</span>
+        </label>
+        <span class="result-count" id="resultCount" aria-live="polite"></span>
+      </div>
+      <div class="toolbar-row">
+        <button id="exportBtn" type="button" class="btn">Export progress (JSON)</button>
+        <label class="btn import-btn">Import progress <input id="importInput" type="file" accept="application/json,.json"></label>
+        <button id="resetBtn" type="button" class="btn quiet">Reset progress</button>
+      </div>
+    </div>
+    <p id="onlineNote" class="note" hidden>No online trophies in the 55 — every trophy is earnable offline, solo, with no online play required.</p>
+    <div id="checklist" class="cards"></div>
+    <p id="emptyState" class="empty" hidden>No trophies match these filters. Try clearing the search or choosing All.</p>
+  </section>
+
+  <section id="view-roadmap" class="view" aria-label="Roadmap to the platinum">
+    <h2 class="section-title">Roadmap to the Platinum</h2>
+    <p class="section-sub">Eight stages in the order to play them. Check trophies off here or in the list — the stage bars and the dashboard update together. Stage 3 is the point of no return: finish it before the final mission.</p>
+    <div id="roadmapStages" class="stages"></div>
+  </section>
+
+  <section id="view-collectibles" class="view" aria-label="Collectibles hub">
+    <h2 class="section-title">Collectibles Hub</h2>
+    <p class="section-sub">Every collectible set, with the count the official description (or the cited trophy-tracking lists) gives. Tap a set to jump to its trophies.</p>
+    <div id="collectibleSets" class="sets"></div>
+  </section>
+
+  <section id="view-missable" class="view" aria-label="Missable trophies">
+    <h2 class="section-title">Missable Trophies — don&rsquo;t get locked out</h2>
+    <p class="section-sub">Seven trophies can pass you by: partner-gated moments, a rival who may leave, story choices that lock in, and one-off events. All seven must be earned <strong>before the final mission</strong>. Missable flags are read from the official descriptions; the game may let you replay chapters, but don&rsquo;t count on it.</p>
+    <div id="missableList" class="cards"></div>
+  </section>
+</main>
+
+<div id="drawerOverlay" class="overlay" hidden></div>
+<aside id="drawer" class="drawer" aria-label="Trophy detail" hidden>
+  <button id="drawerClose" type="button" class="drawer-close" aria-label="Close detail panel">&times;</button>
+  <div id="drawerBody"></div>
+</aside>
+
+<footer>
+  <p>GTA VI Trophy Guide — an unofficial fan guide. Grand Theft Auto and Rockstar Games are trademarks of their owners; this guide uses no official artwork, logos or game screenshots. Trophy names, descriptions and grades as published by PlayStation. Guides are this guide&rsquo;s own words, with sources named beside each trophy. Works fully offline.</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
